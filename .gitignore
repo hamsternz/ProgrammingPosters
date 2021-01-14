@@ -1,0 +1,5 @@
+output/*.jpg
+output/*.ppm
+build/*.ppm
+bin/*
+texture/*
