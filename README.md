@@ -9,3 +9,21 @@ Hopefully these will encouage the viewer to look at the code and see how it runs
 - Must only use standard C libraries
 - All code fits on the poster
 - Code is sensibly indented
+- Reasonable level of error checking
+
+## Issues
+- the Makefile is a mess## Thumbnails of posters:
+
+## Building
+If you have gcc and netpmb installed you should be just able to type
+    make
+The images will be in the output directory
+
+## Previews of posters
+![Alt text](thumbs/ball.jpg?raw=true "Title")
+![Alt text](thumbs/mandelbrot.jpg?raw=true "Title")
+![Alt text](thumbs/planet.jpg?raw=true "Title")
+![Alt text](thumbs/pulsar.jpg?raw=true "Title")
+![Alt text](thumbs/sinc.jpg?raw=true "Title")
+![Alt text](thumbs/torus.jpg?raw=true "Title")
+
