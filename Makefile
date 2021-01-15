@@ -1,6 +1,10 @@
 COPTS=-Wall -pedantic -lm -O4
 
-all: output/ball.jpg output/mandelbrot.jpg  output/planet.jpg output/pulsar.jpg output/sinc.jpg output/torus.jpg
+all: images thumbs
+
+images : output/ball.jpg output/mandelbrot.jpg  output/planet.jpg output/pulsar.jpg output/sinc.jpg output/torus.jpg
+
+thumbs : thumbs/ball.jpg thumbs/mandelbrot.jpg  thumbs/planet.jpg thumbs/pulsar.jpg thumbs/sinc.jpg thumbs/torus.jpg
 
 texture/bluemarble.ppm :
 	# You need to download the blue marble from:
@@ -11,20 +15,38 @@ texture/bluemarble.ppm :
 output/torus.jpg : output/torus.ppm
 	cat $< | ppmtojpeg > $@
 
+thumbs/torus.jpg : output/torus.ppm
+	cat $< | pnmscale 0.10 | ppmtojpeg > $@
+
 output/pulsar.jpg : output/pulsar.ppm
-	cat $< | ppmtojpeg > $@
+	cat $< | ppmtojpeg > output/pulsar.jpg
+
+thumbs/pulsar.jpg : output/pulsar.ppm
+	cat $< | pnmscale 0.10 | ppmtojpeg > $@
 
 output/sinc.jpg : output/sinc.ppm
 	cat $< | ppmtojpeg > $@
 
+thumbs/sinc.jpg : output/sinc.ppm
+	cat $< | pnmscale 0.10 | ppmtojpeg > $@
+
 output/ball.jpg : output/ball.ppm
 	cat $< | ppmtojpeg > $@
+
+thumbs/ball.jpg : output/ball.ppm
+	cat $< | pnmscale 0.10 | ppmtojpeg > $@
 
 output/mandelbrot.jpg : output/mandelbrot.ppm 
 	cat $< | ppmtojpeg > $@
 
+thumbs/mandelbrot.jpg : output/mandelbrot.ppm 
+	cat $< | pnmscale 0.10 | ppmtojpeg > $@
+
 output/planet.jpg : output/planet.ppm
 	cat $< | ppmtojpeg > $@
+
+thumbs/planet.jpg : output/planet.ppm
+	cat $< | pnmscale 0.10 | ppmtojpeg > $@
 
 output/torus.ppm : bin/torus bin/make_poster 
 	bin/torus build/img.ppm && bin/make_poster src/torus.c build/img.ppm output/torus.ppm
