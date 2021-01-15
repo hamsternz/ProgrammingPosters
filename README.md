@@ -10,9 +10,12 @@ Hopefully these will encouage the viewer to look at the code and see how it runs
 - All code fits on the poster
 - Code is sensibly indented
 - Reasonable level of error checking
+- No external dependancies
 
-## Issues
-- the Makefile is a mess## Thumbnails of posters:
+(I bent the rules slightly for planet.jpg, allowing it to pull down a texture from NASA)
+
+## Known Issues
+- the Makefile is a mess
 
 ## Building
 If you have gcc and netpmb installed you should be just able to type
