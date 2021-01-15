@@ -12,6 +12,8 @@ Hopefully these will encouage the viewer to look at the code and see how it runs
 - Reasonable level of error checking
 - No external dependancies
 
+The 'pnmtojpeg' tool, part of netpbm, is used to convert the 'PNM P6' output files to a compressed JPG image.
+
 (I bent the rules slightly for planet.jpg, allowing it to pull down a texture from NASA)
 
 ## Known Issues
