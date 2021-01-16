@@ -2,15 +2,21 @@ COPTS=-Wall -pedantic -lm -O4
 
 all: images thumbs
 
-images : output/ball.jpg output/mandelbrot.jpg  output/planet.jpg output/pulsar.jpg output/sinc.jpg output/torus.jpg
+images : output/ball.jpg output/mandelbrot.jpg  output/planet.jpg output/pulsar.jpg output/sinc.jpg output/torus.jpg output/waggle.jpg
 
-thumbs : thumbs/ball.jpg thumbs/mandelbrot.jpg  thumbs/planet.jpg thumbs/pulsar.jpg thumbs/sinc.jpg thumbs/torus.jpg
+thumbs : thumbs/ball.jpg thumbs/mandelbrot.jpg  thumbs/planet.jpg thumbs/pulsar.jpg thumbs/sinc.jpg thumbs/torus.jpg thumbs/waggle.jpg
 
 texture/bluemarble.ppm :
 	# You need to download the blue marble from:
 	# https://visibleearth.nasa.gov/images/57735/the-blue-marble-land-surface-ocean-color-sea-ice-and-clouds
 	wget https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57735/land_ocean_ice_cloud_2048.jpg
 	jpegtopnm < land_ocean_ice_cloud_2048.jpg > $@
+
+output/waggle.jpg : output/waggle.ppm
+	cat $< | ppmtojpeg > $@
+
+thumbs/waggle.jpg : output/waggle.ppm
+	cat $< | pnmscale 0.10 | ppmtojpeg > $@
 
 output/torus.jpg : output/torus.ppm
 	cat $< | ppmtojpeg > $@
@@ -48,6 +54,9 @@ output/planet.jpg : output/planet.ppm
 thumbs/planet.jpg : output/planet.ppm
 	cat $< | pnmscale 0.10 | ppmtojpeg > $@
 
+output/waggle.ppm : bin/waggle bin/make_poster 
+	bin/waggle build/img.ppm && bin/make_poster src/waggle.c build/img.ppm output/waggle.ppm
+
 output/torus.ppm : bin/torus bin/make_poster 
 	bin/torus build/img.ppm && bin/make_poster src/torus.c build/img.ppm output/torus.ppm
 
@@ -65,6 +74,9 @@ output/mandelbrot.ppm : bin/mandelbrot bin/make_poster
 
 output/planet.ppm : bin/planet bin/make_poster texture/bluemarble.ppm
 	bin/planet build/img.ppm && bin/make_poster src/planet.c build/img.ppm output/planet.ppm
+
+bin/waggle: src/waggle.c
+	gcc -o $@ $< $(COPTS)
 
 bin/torus: src/torus.c
 	gcc -o $@ $< $(COPTS)
