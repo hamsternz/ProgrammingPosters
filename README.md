@@ -26,6 +26,7 @@ The images will be in the output directory
 
 ## Previews of posters
 ![Alt text](thumbs/ball.jpg?raw=true "Title")
+![Alt text](thumbs/waggle.jpg?raw=true "Title")
 ![Alt text](thumbs/mandelbrot.jpg?raw=true "Title")
 ![Alt text](thumbs/planet.jpg?raw=true "Title")
 ![Alt text](thumbs/pulsar.jpg?raw=true "Title")
